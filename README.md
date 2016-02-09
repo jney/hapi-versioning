@@ -7,11 +7,12 @@
 We want to keep our API clean being able to call /users or /users/2/follow/1 without adding version number
 /api/v1/users and api/v2/users
 
-with this Hapi.plugin you can just pass the pattern and header 
+with this Hapi.plugin you can just pass the pattern and header
 ```javascript
 {
     register: require('hapi-versioning'),
     options: {
+        defaultVersion: 'v0',
         pattern: /^(v[1-9])$/,
         header: 'ourversion'
     }
@@ -21,7 +22,7 @@ with this Hapi.plugin you can just pass the pattern and header
 That will check the header (only if its not set in the url) on evevry request and will redirect to thr right path.
 
 for ex'
-```javascript 
+```javascript
 {
     register: require('hapi-versioning'),
     options: {} //set to default header.version = v1
